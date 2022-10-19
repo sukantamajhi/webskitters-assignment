@@ -37,20 +37,13 @@ const Header = () => {
 						{/* <Link href={`/products`} passHref>
 							<a className="mr-5 hover:text-gray-900">Products</a>
 						</Link> */}
-						{getLocalStorage("user")?._id && (
-							<button
-								// onClick={handleBtnClick}
-								className={`mr-5 inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 bg-blue-600 text-white`}>
-								Add Product
-							</button>
-						)}
 					</nav>
 					<button
 						onClick={handleBtnClick}
 						className={`inline-flex items-center border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ${
 							getLocalStorage("user")
 								? `bg-red-600 text-white`
-								: `bg-gray-100`
+								: `bg-gray-100 pointer-events-none`
 						}`}>
 						{getLocalStorage("user") ? "Logout" : `Login`}
 					</button>

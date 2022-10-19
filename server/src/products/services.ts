@@ -21,7 +21,7 @@ export default {
 					})
 				} else {
 					return resolve({
-						status: 200,
+						status: 201,
 						result: createProduct,
 						message: "Product created successfully"
 					})
@@ -109,21 +109,25 @@ export default {
 		})
 	},
 
-	// delete: (req: request) => {
-	// 	return new Promise(async (resolve, reject) => {
-	// 		try {
-	// 			const product = await ProductModel.findOneAndDelete({ _id: req.params.
-	// 				productId });
-
-
-	// 		} catch (error) {
-	// 			console.log(error, "<<-- Error in delete product")
-	// 			return reject({
-	// 				status: 500,
-	// 				result: error,
-	// 				message: "Internal server error"
-	// 			})
-	// 		}
-	// 	})
-	// }
+	delete: (req: request) => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const product = await ProductModel.findOneAndDelete({
+					_id: req.params.productId
+				});
+				return resolve({
+					status: 200,
+					result: product,
+					message: "Product deleted successfully"
+				})
+			} catch (error) {
+				console.log(error, "<<-- Error in delete product")
+				return reject({
+					status: 500,
+					result: error,
+					message: "Internal server error"
+				})
+			}
+		})
+	}
 }

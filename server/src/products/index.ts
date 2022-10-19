@@ -66,4 +66,24 @@ router.put("/:productId", async (req: any, res: any) => {
 	})
 })
 
+/**
+ * @type - DELETE
+ * @route -  /api/products/:productId
+ * @desc - route for delete product.
+ * @function - delete
+ */
+router.delete("/:productId", async (req: any, res: any) => {
+	services.delete(req).then((response: any) => {
+		res.status(response.status).send({
+			result: response.result,
+			message: response.message
+		})
+	}).catch((error: any) => {
+		res.status(error.status).send({
+			result: error.result,
+			message: error.message
+		})
+	})
+})
+
 export default router
